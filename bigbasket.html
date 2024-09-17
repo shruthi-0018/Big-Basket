@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Basket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: green;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+        h1, h2 {
+            margin-top: 0;
+        }
+        nav {
+            background-color: #ffffff;
+            padding: 10px;
+            text-align: center;
+        }
+       hero{
+           background: white;
+           color: black;
+           text-align: center;
+           padding: auto;
+        }
+       hero.container{
+           max-width: 800px;
+           margin: 0 auto;
+        }
+        nav button {
+            background-color: #008000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        nav button:hover {
+            background-color: #005700;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            max-width: 80%;
+            max-height: 80%;
+            overflow-y: auto;
+        }
+        .popup h2 {
+            margin-top: 0;
+        }
+        .popup button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .popup button:hover {
+            background-color: darkred;
+        }
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 500;
+        }
+        footer {
+            background-color: green;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="bigbasket.png" width="200" alt="Big Basket Logo">
+        <h1>BigBasket</h1>
+    </header>
+    <nav>
+        <button onclick="togglePopup('aboutPopup')">About Us</button>
+        <button onclick="togglePopup('productsPopup')">Our Products</button>
+        <button onclick="togglePopup('offersPopup')">Special Offers</button>
+        <button onclick="togglePopup('shopPopup')">Shop Online</button>
+        <button onclick="togglePopup('contactPopup')">Contact Us</button>
+        <button onclick="togglePopup('followPopup')">Follow Us</button>
+    </nav>
+ <main>
+<section class="hero" id="home">
+<div class="container">
+<h2>It's Your Basket</h2>
+<p>welcome to Our BigBasket</p>
+</div>
+</section>
+</main>
+
+    <!-- Popups -->
+    <div id="aboutPopup" class="popup">
+        <h2>About Us</h2>
+        <p>Bigbasket is an Indian online grocer headquartered in Bangalore, India, and currently owned by Tata Digital. It was the first online grocer in India, set up in 2011. It is a registered company with the name Supermarket Grocery Supplies Pvt. Ltd. We strive to provide the best quality products at affordable prices.</p>
+        <p>As of January 2023, the company operates in more than 30 cities in India and processes around 15 million orders per month.</p>
+        <p>According to Bloomberg News, Bigbasket is considering an initial public offering by 2025 as part of its growth plans.</p>
+        <button onclick="togglePopup('aboutPopup')">Close</button>
+    </div>
+    <div id="productsPopup" class="popup">
+        <h2>Our Products</h2>
+        <div class="product">
+            <img src="apple.jpg" width="200" alt="apples">
+            <h3>Apple</h3>
+            <p>Price: $1.99 per pound</p>
+            <button onclick="toggleDetails('appleDetails')">About</button>
+            <button onclick="addToCart('Apple')">Add to Cart</button>
+            <div id="appleDetails" class="shopping-details">
+                <p>Fresh and juicy apples sourced from local farms. Perfect for a healthy snack or ingredient in your favorite recipes.</p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="milk.jpg" width="200" alt="Milk">
+            <h3>Milk</h3>
+            <p>Price: $2.99 per liter</p>
+            <button onclick="toggleDetails('milkDetails')">About</button>
+            <button onclick="addToCart('Milk')">Add to Cart</button>
+            <div id="milkDetails" class="shopping-details">
+                <p>Fresh milk from local dairy farms. High-quality and full of essential nutrients.</p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="bread.jpg" width="200" alt="Bread">
+            <h3>Bread</h3>
+            <p>Price: $1.50 per loaf</p>
+            <button onclick="toggleDetails('breadDetails')">About</button>
+            <button onclick="addToCart('Bread')">Add to Cart</button>
+            <div id="breadDetails" class="shopping-details">
+                <p>Freshly baked bread available in various types including whole wheat, white, and multigrain. Perfect for sandwiches and toast.</p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="egge.jpg" width="200" alt="Eggs">
+            <h3>Eggs</h3>
+            <p>Price: $3.00 per dozen</p>
+            <button onclick="toggleDetails('eggsDetails')">About</button>
+            <button onclick="addToCart('Eggs')">Add to Cart</button>
+            <div id="eggsDetails" class="shopping-details">
+                <p>Farm fresh eggs, perfect for breakfast, baking, and cooking. Rich in protein and essential nutrients.</p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="rice.jpg" width="200" alt="Rice">
+            <h3>Rice</h3>
+            <p>Price: $1.20 per pound</p>
+            <button onclick="toggleDetails('riceDetails')">About</button>
+            <button onclick="addToCart('Rice')">Add to Cart</button>
+            <div id="riceDetails" class="shopping-details">
+                <p>High-quality rice available in various varieties including basmati, jasmine, and long grain. Ideal for a range of dishes.</p>
+            </div>
+        </div>
+        <!-- Add more product divs for other products as needed -->
+        <button onclick="togglePopup('productsPopup')">Close</button>
+    </div>
+    <div id="offersPopup" class="popup">
+        <h2>Special Offers</h2>
+        <div class="product">
+            <img src="apple.jpg" width="200" alt="Apple Special Offer">
+            <h3>Apple</h3>
+            <p>Special Offer: Buy 1 Get 1 Free!</p>
+            <button onclick="toggleDetails('appleOfferDetails')">Read More</button>
+            <div id="appleOfferDetails" class="offer-details">
+                <p>Enjoy our special offer on apples. Buy one pound of apples and get another pound for free. This offer is valid until the end of the month.</p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="milk.jpg" width="200" alt="Milk Special Offer">
+            <h3>Milk</h3>
+            <p>Special Offer: 20% off on all dairy products!</p>
+            <button onclick="toggleDetails('milkOfferDetails')">Read More</button>
+            <div id="milkOfferDetails" class="offer-details">
+                <p>Get 20% off on all dairy products including milk, cheese, yogurt, and more. This offer is valid for this week only. Don't miss out on these great savings!</p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="bread.jpg" width="200" alt="Bread Special Offer">
+            <h3>Bread</h3>
+            <p>Special Offer: Buy 2 Get 1 Free!</p>
+            <button onclick="toggleDetails('breadOfferDetails')">Read More</button>
+            <div id="breadOfferDetails" class="offer-details">
+                <p>Buy any two loaves of bread and get the third one free. This offer applies to all types of bread and is valid for a limited time.</p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="eggs.jpg" width="200" alt="Eggs Special Offer">
+            <h3>Eggs</h3>
+            <p>Special Offer: 15% off on all egg cartons!</p>
+            <button onclick="toggleDetails('eggsOfferDetails')">Read More</button>
+            <div id="eggsOfferDetails" class="offer-details">
+                <p>Save 15% on all cartons of eggs. Stock up on farm fresh eggs at a discounted price. Offer valid while supplies last.</p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="rice.jpg" width="200" alt="Rice Special Offer">
+            <h3>Rice</h3>
+            <p>Special Offer: 10% off on all rice varieties!</p>
+            <button onclick="toggleDetails('riceOfferDetails')">Read More</button>
+            <div id="riceOfferDetails" class="offer-details">
+                <p>Get 10% off on all rice varieties including basmati, jasmine, and long grain. This offer is valid for this month only.</p>
+            </div>
+        </div>
+        <!-- Add more offer divs for other offers as needed -->
+        <button onclick="togglePopup('offersPopup')">Close</button>
+    </div>
+    <div id="shopPopup" class="popup">
+        <h2>Shop Online</h2>
+        <p>Welcome to our online store! Browse our wide selection of products and enjoy convenient shopping from the comfort of your home.</p>
+        <!-- Add more content for the Shop Online section as needed -->
+        <button onclick="togglePopup('shopPopup')">Close</button>
+    </div>
+    <div id="contactPopup" class="popup">
+        <h2>Contact Us</h2>
+        <p>Have any questions or need assistance? Reach out to us through the following channels:</p>
+        <ul>
+            <li>Email: support@bigbasket.com</li>
+            <li>Phone: 1-800-123-4567</li>
+            <li>Address: 123 Grocery Lane, Bangalore, India</li>
+        </ul>
+        <button onclick="togglePopup('contactPopup')">Close</button>
+    </div>
+    <div id="followPopup" class="popup">
+        <h2>Follow Us</h2>
+        <p>Stay connected with us on social media for the latest updates and offers:</p>
+        <ul>
+            <li>Facebook: <a href="https://www.facebook.com/bigbasket">facebook.com/bigbasket</a></li>
+            <li>Twitter: <a href="https://www.twitter.com/bigbasket">twitter.com/bigbasket</a></li>
+            <li>Instagram: <a href="https://www.instagram.com/bigbasket">instagram.com/bigbasket</a></li>
+        </ul>
+        <button onclick="togglePopup('followPopup')">Close</button>
+    </div>
+    <div id="popupOverlay" class="popup-overlay" onclick="closeAllPopups()"></div>
+
+    <footer>
+         GO GREEN:We took an intiative to plant a tree for each order we receive
+    </footer>
+
+    <script>
+        function togglePopup(popupId) {
+            const popup = document.getElementById(popupId);
+            const overlay = document.getElementById('popupOverlay');
+            if (popup.style.display === 'block') {
+                popup.style.display = 'none';
+                overlay.style.display = 'none';
+            } else {
+                closeAllPopups();
+                popup.style.display = 'block';
+                overlay.style.display = 'block';
+            }
+        }
+
+        function closeAllPopups() {
+            const popups = document.querySelectorAll('.popup');
+            const overlay = document.getElementById('popupOverlay');
+            popups.forEach(popup => popup.style.display = 'none');
+            overlay.style.display = 'none';
+        }
+
+        function toggleDetails(detailsId) {
+            const details = document.getElementById(detailsId);
+            if (details.style.display === 'block') {
+                details.style.display = 'none';
+            } else {
+                details.style.display = 'block';
+            }
+        }
+
+        function addToCart(productName) {
+            alert(productName + ' has been added to your cart.');
+        }
+    </script>
+</body>
+</html>
